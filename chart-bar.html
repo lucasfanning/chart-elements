@@ -63,9 +63,11 @@ It is sometimes used to show trend data, and the comparison of multiple data set
 
           this.datasets = [];
           this.values.forEach(function (val, i) {
+            var c = this.colors[i];
+            var isRGB = (c.indexOf(',') > -1)
             this.datasets.push({
-              fillColor:    "rgba(" + this.colors[i] + ",0.5)",
-              strokeColor:  "rgba(" + this.colors[i] + ",1)",
+              fillColor:    isRGB? "rgba(" + c + ",0.5)":c,
+              strokeColor:  isRGB? "rgba(" + c + ",1)":c,
               data: this.values[i]
             });
           }, this);
